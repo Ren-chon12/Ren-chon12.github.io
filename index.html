@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Harsh Kumar | Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #EFECE3;
+    --paper-raised: #F7F5EF;
+    --ink: #1E2A2F;
+    --ink-soft: #4B5B60;
+    --rule: #D8D2C2;
+    --pine: #285C50;
+    --pine-soft: #E4ECE7;
+    --gold: #B4802E;
+    --gold-soft: #F1E6D2;
+    --font-display: 'Fraunces', serif;
+    --font-body: 'IBM Plex Sans', sans-serif;
+    --font-mono: 'IBM Plex Mono', monospace;
+  }
+
+  :root:not([data-theme="light"]) {
+    @media (prefers-color-scheme: dark) {
+      --paper: #171D1B;
+      --paper-raised: #1E2623;
+      --ink: #EAE7DC;
+      --ink-soft: #9FADA8;
+      --rule: #33403B;
+      --pine: #7FC4AE;
+      --pine-soft: #22322B;
+      --gold: #D9A857;
+      --gold-soft: #2E2618;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #171D1B;
+    --paper-raised: #1E2623;
+    --ink: #EAE7DC;
+    --ink-soft: #9FADA8;
+    --rule: #33403B;
+    --pine: #7FC4AE;
+    --pine-soft: #22322B;
+    --gold: #D9A857;
+    --gold-soft: #2E2618;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a { color: var(--pine); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--pine); outline-offset: 3px; }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* ---------- Header ---------- */
+  header.hero {
+    padding: 72px 0 48px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--pine);
+    margin-bottom: 18px;
+    letter-spacing: 0.01em;
+  }
+
+  h1.name {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(38px, 6vw, 56px);
+    line-height: 1.05;
+    margin: 0 0 14px;
+    letter-spacing: -0.01em;
+  }
+
+  .role-line {
+    font-size: 19px;
+    color: var(--ink-soft);
+    max-width: 46ch;
+    margin: 0 0 28px;
+  }
+
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 18px;
+    font-family: var(--font-mono);
+    font-size: 13.5px;
+  }
+
+  .contact-row a { color: var(--ink); }
+  .contact-row a:hover { color: var(--pine); }
+
+  .hero-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 28px;
+  }
+
+  .avatar {
+    flex-shrink: 0;
+    width: 88px;
+    height: 88px;
+    border-radius: 6px;
+    background: var(--pine-soft);
+    color: var(--pine);
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border: 1px solid var(--rule);
+  }
+
+  .avatar img {
+    width: 175%;
+    height: 175%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* ---------- Section scaffolding ---------- */
+  section { padding: 56px 0; border-bottom: 1px solid var(--rule); }
+  section:last-of-type { border-bottom: none; }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  h2.section-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 26px;
+    margin: 0;
+  }
+
+  .section-count {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+
+  /* -------- About --------- */
+  .about-text p {
+    max-width: 62ch;
+    font-size: 17px;
+    margin: 0 0 16px;
+  }
+  .about-text p:last-child { margin-bottom: 0; }
+
+  /* ---------- Changelog entries (Experience & Projects) --------- */
+  .entry {
+    display: grid;
+    grid-template-columns: 108px 1fr;
+    gap: 20px;
+    padding: 22px 0;
+    border-top: 1px solid var(--rule);
+  }
+  .entry:first-child { border-top: none; padding-top: 0; }
+
+  .entry-stamp {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    padding-top: 3px;
+  }
+
+  .entry-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11.5px;
+    padding: 2px 7px;
+    border-radius: 3px;
+    background: var(--pine-soft);
+    color: var(--pine);
+    margin-bottom: 8px;
+  }
+  .entry-tag.gold { background: var(--gold-soft); color: var(--gold); }
+
+  .entry-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 19px;
+    margin: 0 0 4px;
+  }
+
+  .entry-org {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    margin: 0 0 12px;
+  }
+
+  .entry ul {
+    margin: 0 0 12px;
+    padding-left: 18px;
+  }
+  .entry ul li { margin-bottom: 5px; font-size: 15px; }
+  .entry ul li:last-child { margin-bottom: 0; }
+
+  .entry-links {
+    display: flex;
+    gap: 14px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    margin-top: 10px;
+  }
+
+  .stack-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .stack-pill {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    padding: 3px 9px;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    color: var(--ink-soft);
+  }
+
+  /* ------ Skills -------- */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px 32px;
+  }
+  .skill-group h3 {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    text-transform: none;
+    color: var(--ink-soft);
+    margin: 0 0 10px;
+    font-weight: 500;
+  }
+  .skill-group ul { list-style: none; margin: 0; padding: 0; }
+  .skill-group li { font-size: 15px; margin-bottom: 6px; }
+
+  /* ------- Education -------- */
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .edu-row h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: 19px;
+    margin: 0 0 4px;
+  }
+  .edu-meta { font-size: 14.5px; color: var(--ink-soft); }
+  .edu-stamp { font-family: var(--font-mono); font-size: 13px; color: var(--ink-soft); white-space: nowrap; }
+  .edu-detail { margin: 10px 0 0; font-size: 15px; }
+
+  /* ---------- Footer ---------- */
+  footer {
+    padding: 48px 0 72px;
+    text-align: left;
+  }
+  footer .cta {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    margin: 0 0 16px;
+  }
+  footer .contact-row { margin-bottom: 6px; }
+  footer .note { font-size: 13.5px; color: var(--ink-soft); margin-top: 20px; }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 640px) {
+    header.hero { padding: 48px 0 36px; }
+    section { padding: 40px 0; }
+    .entry { grid-template-columns: 1fr; gap: 6px; }
+    .entry-stamp { padding-top: 0; }
+    .skills-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="hero">
+    <div class="hero-top">
+      <div class="avatar">
+
+        <!-- Replace with your own photo: <img src="your-photo.jpg" alt="Alex Chen"> -->
+         <img src = "portfolioImg.jpg" alt = "Harsh Kumar">
+      </div>
+      <div>
+        <div class="eyebrow">// portfolio</div>
+        <h1 class="name">Harsh Kumar </h1>
+      </div>
+    </div>
+    <p class="role-line">Computer Science student with interest in Full-stack and applied ML - looking for a Winter 2027 co-op term.</p>
+    <div class="contact-row">
+      <a href="mailto:kumarh3@myumantoba.ca">kumarh3@myumantoba.ca</a>
+      <a href="https://github.com/Ren-chon12">GitHub</a>
+      <a href="https://www.linkedin.com/in/harsh-kumar-4a85142a6/">LinkedIn</a>
+      <a href="#">TODO: Resume (PDF)</a>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="section-head">
+      <h2 class="section-title">About</h2>
+    </div>
+    <div class="about-text">
+      <p>I'm a third-year Computer Science student at University
+        of Manitoba, most interested Full-stack applications, android development, and analyzing interesting data.
+        Outside coursework, I like to learn new things currently I'm diving deeper in mobile development architectures and Linux based Distros. My hobbies include
+        Running, cooking and reading manga.</p>
+      <p>I'm looking for a co-op where I can work on a real production codebase alongside a team that will push back on my decisions. 
+        Comfortable in Java, JavaScript,TypeScript, C/C++, and React.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="section-head">
+      <h2 class="section-title">Experience & Extracurriculars</h2>
+      <span class="section-count">2 entries</span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-stamp">Sep 2026 -<br>Current</div>
+      <div>
+        <span class="entry-tag">Part-Time</span>
+        <h3 class="entry-title">Student Office Assistant</h3>
+        <p class="entry-org">Student Transitions and Success Centre, University of Manitoba | Winnipeg, MB</p>
+        <ul>
+          <li>Mentor undgraduate students transitioning through University life, or formulate a realistic plan for students who don't meet the faculty requirements.</li>
+
+          <li>Facilitate workshops and activities that encourage student engagement, confidence, helping them build a connection with the university community.</li>
+
+          <li>Identify student needs and connect mentees with appropriate campus resources while maintaining confidentiality of all the student info.</li>
+        </ul>
+        <div class="stack-row">
+          <span class="stack-pill">Interpersonal Skills</span>
+          <span class="stack-pill">Effective Communication</span>
+          <span class="stack-pill">Documentation & Note Taking</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-stamp">May 2024 -<br>Current</div>
+      <div>
+        <span class="entry-tag">Part-time (Permanent)</span>
+        <h3 class="entry-title">Courtesy Clerk</h3>
+        <p class="entry-org">River & Osborne Liquor Mart (MBLL) | Winnipeg, MB</p>
+        <ul>
+          <li>Receive, restock, and organize inventory while maintaining accurate stock levels and store presentation.</li>
+
+          <li>Collaborate with team members and communicate with management to ensuring smooth daily operations.</li>
+
+          <li>Train new employees one-to-one on store policies, procedures, and POS system to optimize productivity.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head">
+      <h2 class="section-title">Projects</h2>
+      <span class="section-count">4 entries</span>
+    </div>
+
+    <div class="entry">
+      <div class="entry-stamp">Personal<br>2026</div>
+      <div>
+        <h3 class="entry-title">Smart Hospital Management System</h3>
+        <p class="entry-org">Full-stack web app, solo project</p>
+        <ul>
+          <li>Built a full-stack MERN application with MVC architecture supporting authentication, OTP verification, and role-based admin panel (CRUD).</li>
+          <li>Implemented patient management, scheduling, medical orders, and search/filter functionality.</li>
+          <li>Integrated real-time chat (Socket.io), notifications, file uploads, and geolocation maps (Leaflet/OpenStreetMap).</li>
+          <li>Designed scalable backend with REST APIs and seeded database for testing and development.</li>
+        </ul>
+        <div class="stack-row">
+          <span class="stack-pill">MongoDB</span>
+          <span class="stack-pill">Express.js</span>
+          <span class="stack-pill">React (Vite)</span>
+          <span class="stack-pill">Node.js</span>
+        </div>
+        <div class="entry-links">
+          <a href="https://github.com/Ren-chon12/Hospital-Management-System">View Repo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-stamp">Hackathon<br>2026</div>
+      <div>
+        <h3 class="entry-title">Bison Bot</h3>
+        <p class="entry-org">AI-Powered Academic Chatbot</p>
+        <ul>
+          <li>Developed an AI-powered academic advisor chatbot for UofM students using natural language queries.</li>
+          <li>Led backend development in a team of five, trained Rasa NLU model, handled custom actions, and structured domain-specific knowledge base.</li>
+          <li>Integrated vector search with local LLMs (Ollama) to enhance contextual and offline responses.</li>
+          <li>Connected backend to Angular front-end via REST APIs for seamless deployment.</li>
+        </ul>
+        <div class="stack-row">
+          <span class="stack-pill">Angular</span>
+          <span class="stack-pill">Rasa</span>
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">Rasa</span>
+          <span class="stack-pill">Vector Search</span>
+          <span class="stack-pill">Ollama</span>
+          <span class="stack-pill">CSS, HTML Search</span>
+          <span class="stack-pill">FIASS</span>
+          <span class="stack-pill">TypeScript</span>
+
+
+
+
+        </div>
+        <div class="entry-links">
+          <a href="https://github.com/devnbihack-cyber/BisonBot.git">View Repo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-stamp">Hackathon<br>2025</div>
+      <div>
+        <h3 class="entry-title">Reverse Fortune Teller</h3>
+        <p class="entry-org">AI Chatbot</p>
+        <ul>
+          <li>Collaborated in a team of four to develop a reverse fortune teller web application within a limited development time frame.</li>
+          <li>Developed a chatbot that generates predictions about users' past experiences based on personality traits and user-provided inputs.</li>
+          <li>Participated in project planning, feature implementation, and iterative testing to deliver a functional prototype by the end of the event.</li>
+          
+
+        </ul>
+        <div class="stack-row">
+          <span class="stack-pill">Python</span>
+          <span class="stack-pill">CSS, HTML</span>
+          <span class="stack-pill">JavaScript</span>
+          <span class="stack-pill">Flask</span>
+        </div>
+        <div class="entry-links">
+          <a href="https://github.com/SheikhAdeeb/reverse-fortune-teller">View repo</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-stamp">Academic<br>2026</div>
+      <div>
+        <h3 class="entry-title">Candy Clicker</h3>
+        <p class="entry-org">MVC Architecture applicatoin</p>
+        <ul>
+          <li>uilt a Cookie Clicker style game using MVC architecture, SOLID principles, and Design by Contract, producing maintainable and scalable code.</li>
+          <li>Designed persistent state management using PGLite to store player progress, upgrades, and autobuy configurations.</li>
+          <li>Developed a probabilistic Markov chain autobuy algorithm to optimize automated purchasing decisions. While being mindful about the resource allocation.</li>
+          <li>Performed testing through Vitest and ensured appropriate test coverage. Integrated new code while testing, to catch code breakage.</li>
+        </ul>
+        <div class="stack-row">
+          <span class="stack-pill">CSS, HTML</span>
+          <span class="stack-pill">TypeScript</span>
+          <span class="stack-pill">PGLite</span>
+          <span class="stack-pill">Vite</span>
+        </div>
+        <div class="entry-links">
+          <a href="https://code.cs.umanitoba.ca/HarshKumar/comp-2452-candyclicker.git">View Repo</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="section-head">
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Languages</h3>
+        <ul>
+          <li>Java, JavaScript, TypeScript, C++, C, Python,  HTML/CSS</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Tools &amp; infrastructure</h3>
+        <ul>
+          <li>Git, Docker, GitHub Actions, Vim, UNIX-based OS</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Frameworks & Database</h3>
+        <ul>
+          <li>React,  PGLite (PostgreSQL), MongoDB, Node.js, Rasa, Flask</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Productivity Tools</h3>
+        <ul>
+          <li>Spreadsheets, Google Workplace, Latex, Discord, Microsoft 365 Suite</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="learning">
+    <div class="section-head">
+      <h2 class="section-title">Currently learning</h2>
+      <span class="section-count">in progress</span>
+    </div>
+    <div class="entry">
+      <div class="entry-stamp">now</div>
+      <div>
+        <span class="entry-tag">in progress</span>
+        <h3 class="entry-title">Android Development</h3>
+        <p class="entry-org">Working with Kotlin and MVVm architecture to make a mobile game.</p>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-stamp">next</div>
+      <div>
+        <span class="entry-tag gold">queued</span>
+        <h3 class="entry-title">Application Security</h3>
+        <p class="entry-org">Creating software in a manner that mitigates threats and velnerabilities.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head">
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="edu-row">
+      <div>
+        <h3>B.Sc. Computer Science</h3>
+        <p class="edu-meta">University of Manitoba | GPA 3.74/4.5</p>
+      </div>
+      <div class="edu-stamp">2024 - Current</div>
+    </div>
+    <p class="edu-detail">Relevant coursework : Analysis of Data Structures &amp; Algorithms, Computer Systems, Programming Paradigms, Database Systems, Computational Theory, Software Development (1 &amp; 2).</p>
+  </section>
+
+  <footer>
+    <p class="cta">Contact Me</p>
+    <div class="contact-row">
+      <a href="mailto:kumarh3@myumanitoba.ca">Email</a>
+      <a href="https://github.com/Ren-chon12">GitHub</a>
+      <a href="https://www.linkedin.com/in/harsh-kumar-4a85142a6/">LinkedIn</a>
+    </div>
+    <p class="note">Based in Winnipeg, MB | Open to remote and in-office roles</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
